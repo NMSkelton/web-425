@@ -19,10 +19,10 @@ import { RouterLink, RouterOutlet } from '@angular/router';
         <nav class="navbar">
           <ul>
             <li><a routerLink="/">Home</a></li>
-            <li><a href="#">Menu</a></li>
-            <li><a href="#">Order</a></li>
-            <li><a href="#">Daily Specials</a></li>
-            <li><a href="#">Feedback</a></li>
+            <li><a href="/menu">Menu</a></li>
+            <li><a href="/order">Order</a></li>
+            <li><a href="/daily-specials">Daily Specials</a></li>
+            <li><a href="/feedback">Feedback</a></li>
           </ul>
         </nav>
 
@@ -34,10 +34,10 @@ import { RouterLink, RouterOutlet } from '@angular/router';
       <footer class="footer">
         <nav class="footer-nav">
           <a routerLink="/">Home</a> |
-          <a href="#">Menu</a> |
-          <a href="#">Order</a> |
-          <a href="#">Daily Specials</a> |
-          <a href="#">Feedback</a>
+          <a href="/menu">Menu</a> |
+          <a href="/order">Order</a> |
+          <a href="/daily-specials">Daily Specials</a> |
+          <a href="/feedback">Feedback</a>
         </nav>
         <p>&copy; 2024 Virtual Taco Stand</p>
       </footer>

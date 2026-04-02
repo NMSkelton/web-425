@@ -24,10 +24,12 @@ import { RouterOutlet } from '@angular/router';
       <nav class="navbar">
 
         <div class="nav-links">
-          <a href="#">Home</a>
-          <a href="#">Builder</a>
-          <a href="#">Characters</a>
-          <a href="#">About</a>
+          <a href="/home">Home</a>
+          <a href="/players">Players</a>
+          <a href="/character-faction">Factions</a>
+          <a href="/create-character">Create a Character</a>
+          <a href="/create-guild">Create a Guild</a>
+          <a href="/signin">Sign In</a>
         </div>
       </nav>
 
@@ -37,10 +39,12 @@ import { RouterOutlet } from '@angular/router';
 
       <footer class="footer">
         <div class="footer-links">
-          <a href="#">Home</a>
-          <a href="#">Builder</a>
-          <a href="#">Characters</a>
-          <a href="#">About</a>
+          <a href="/home">Home</a>
+          <a href="/players">Players</a>
+          <a href="/character-faction">Factions</a>
+          <a href="/create-character">Create a Character</a>
+          <a href="/create-guild">Create a Guild</a>
+          <a href="/signin">Sign In</a>
         </div>
 
         <p class="copyright">
