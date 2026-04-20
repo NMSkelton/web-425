@@ -29,16 +29,9 @@ import { CommonModule } from '@angular/common';
             <h1>{{ item.name }}</h1>
             <div class="card"
               [ngClass]="{
-                'hunter': item.class.includes('Hunter'),
                 'mage': item.class.includes('Mage'),
-                'shaman': item.class.includes('Shaman'),
                 'rogue': item.class.includes('Rogue'),
-                'demon': item.class.includes('Demon'),
                 'warrior': item.class.includes('Warrior'),
-                'monk': item.class.includes('Monk'),
-                'knight': item.class.includes('Knight'),
-                'druid': item.class.includes('Druid'),
-                'paladin': item.class.includes('Paladin'),
               }">
               <p>
                 <span class="label">Gender   </span>
@@ -87,57 +80,59 @@ import { CommonModule } from '@angular/common';
 
       .card {
         padding: 20px;
-        border-radius: 10px;
+        border-radius: 20px;
+        border: 3px solid #afafaf;
+        position: relative;
+        z-index: 0;
+      }
+
+      .card > * {
+        position: relative;
+        z-index: 1;
+      }
+      
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-repeat: repeat;
+        background-size: 100px 100px;
+        opacity: 20%;
+        z-index: 0;
       }
 
       .label {
-        color: #302500;
+        color: #afafaf;
       }
 
       .value {
-        color: #000000;
-        font-weight: bold;
+        color: #ffffff;
         font-size: 1.2em;
       }
 
-      .hunter {
-        background-color: #AAD372;
-      }
-
       .mage {
-        background-color:	#3FC7EB;
+        background-color:	#276e836c;
+
       }
 
-      .shaman {
-        background-color: #0070DD;
+      .mage::before {
+        background-image: url('/assets/mage_icon.png');
       }
 
       .rogue {
-        background-color:	#FFF468;
+        background-color:	#53306396;
       }
 
-      .demon {
-        background-color: #A330C9;
+      .rogue::before {
+        background-image: url('/assets/rogue_icon.png');
       }
 
       .warrior {
-        background-color:	#C69B6D;
+        background-color:	#8629298c;
       }
 
-      .monk {
-        background-color: #00FF98;
-      }
-
-      .knight {
-        background-color:	#C41E3A;
-      }
-
-      .druid {
-        background-color: #FF7C0A;
-      }
-
-      .paladin {
-        background-color:	#F48CBA;
+      .warrior::before {
+        background-image: url('/assets/warrior_icon.png');
       }
     `
   ]
@@ -150,7 +145,7 @@ export class PlayersComponent {
       {
         name: 'Aeriador',
         gender: 'Male',
-        class: 'Marksmanship Hunter',
+        class: 'Rogue',
         faction: 'Kaldorei',
         startingLocation: 'Shadowglen',
         funFact: 'This was the one that started it all.',
@@ -158,7 +153,7 @@ export class PlayersComponent {
       {
         name: 'Aer',
         gender: 'Male',
-        class: 'Enhancement Shaman',
+        class: 'Warrior',
         faction: 'Draenei',
         startingLocation: 'Ammen Vale',
         funFact: 'Draenei are exiled “broken ones” who fled their homeworld after being hunted by the Burning Legion.',
@@ -166,7 +161,7 @@ export class PlayersComponent {
       {
         name: 'Twoski',
         gender: 'Female',
-        class: 'Frost Mage',
+        class: 'Mage',
         faction: 'Gnome',
         startingLocation: 'New Tinkertown',
         funFact: 'Gnomes are descended from robotic mechanognomes via the Curse of Flesh. ',
@@ -174,7 +169,7 @@ export class PlayersComponent {
       {
         name: 'Aerer',
         gender: 'Male',
-        class: 'Protection Paladin',
+        class: 'Warrior',
         faction: 'Draenei',
         startingLocation: 'Ammen Vale',
         funFact: 'The only character that is not entirely focused on damage, because Retribution Paladins are losers.',
@@ -182,7 +177,7 @@ export class PlayersComponent {
       {
         name: 'Rawdog',
         gender: 'Female',
-        class: 'Feral Druid',
+        class: 'Mage',
         faction: 'Kaldorei',
         startingLocation: 'Shadowglen',
         funFact: 'The Kaldorei were the first to study the Well of Eternity, gaining immortality from its magic.',
@@ -190,7 +185,7 @@ export class PlayersComponent {
       {
         name: 'Napnap',
         gender: 'Female',
-        class: 'Subtlety Rogue',
+        class: 'Rogue',
         faction: 'Haranir',
         startingLocation: 'Harandar',
         funFact: 'The Haranir are an elusive people that tend to the roots of the World Trees.',
@@ -198,7 +193,7 @@ export class PlayersComponent {
       {
         name: 'Deadleg',
         gender: 'Male',
-        class: 'Windwalker Monk',
+        class: 'Mage',
         faction: 'Forsaken Undead',
         startingLocation: 'Deathknell',
         funFact: 'Forsaken broke free from the Lich King’s control and now seek their own identity.',
@@ -206,7 +201,7 @@ export class PlayersComponent {
       {
         name: 'Dansby',
         gender: 'Male',
-        class: 'Arms Warrior',
+        class: 'Warrior',
         faction: 'Alliance',
         startingLocation: 'Coldridge Valley',
         funFact: 'Dwarves were shaped from stone by the titans.',
@@ -214,7 +209,7 @@ export class PlayersComponent {
       {
         name: 'Impotent',
         gender: 'Male',
-        class: 'Unholy Death Knight',
+        class: 'Warrior',
         faction: 'Alliance',
         startingLocation: 'Northshire Valley',
         funFact: 'Death Knights are undead warriors raised by the Lich King, wielding frost and necromantic power.',
@@ -222,7 +217,7 @@ export class PlayersComponent {
       {
         name: 'Snipsnap',
         gender: 'Female',
-        class: 'Devourer Demon Hunter',
+        class: 'Rogue',
         faction: 'Void Elf',
         startingLocation: 'Telogrus Rift',
         funFact: 'Demon Hunters sacrifice their sight to gain spectral vision and demonic powers to fight the Legion.',
