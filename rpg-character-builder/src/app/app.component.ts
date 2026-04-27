@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +31,18 @@ import { RouterLink, RouterOutlet } from '@angular/router';
           <a routerLink="/character-faction">Factions</a>
           <a routerLink="/create-character">Create a Character</a>
           <a routerLink="/create-guild">Create a Guild</a>
-          <a routerLink="/signin">Sign In</a>
+
+          @if (email) {
+            <span class="nav-user">
+              Welcome, {{ email }}
+            </span>
+
+            <button class="nav-button" (click)="signout()">
+              Sign Out
+            </button>
+          } @else {
+            <a routerLink="/signin">Sign In</a>
+          }
         </div>
       </nav>
 
@@ -59,4 +72,24 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'rpg-character-builder';
+  email?: string;
+
+  constructor(
+    private authService: AuthService,
+    private cookieService: CookieService
+  ) {}
+
+  ngOnInit(): void {
+    this.authService.getAuthState().subscribe((isAuth) => {
+      if (isAuth) {
+        this.email = this.cookieService.get('session_user');
+      } else {
+        this.email = undefined;
+      }
+    });
+  }
+
+  signout(): void {
+    this.authService.signout();
+  }
 }

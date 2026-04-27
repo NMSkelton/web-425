@@ -43,16 +43,41 @@ html, body {
 .navbar {
   text-align: center;
   background: #13110f;
-  padding: 0px 110px 0px 0px;
 }
 
-.nav-links a {
-  margin-left: 130px;
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+}
+
+.nav-links a, .nav-user  {
   text-decoration: none;
   color: #fff;
-  font-size: 25px;
+  font-size: 23px;
   transition: 0.2s;
   font-family: "Metamorphous", sans-serif;
+}
+
+.nav-user {
+  color: #ffc750;
+}
+
+.nav-button {
+  background: #afafaf;
+  border: 2px solid #afafaf;
+  border-radius: 10px;
+  color: #13110f;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: "Metamorphous", sans-serif;
+  transition: 0.2s;
+}
+
+.nav-button:hover {
+  color: #4caf50;
 }
 
 .nav-links a:hover {
