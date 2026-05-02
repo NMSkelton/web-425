@@ -89,7 +89,7 @@ import { AuthService } from '../auth.service';
         padding: 25px;
         border: 2px solid #afafaf;
         border-radius: 10px;
-        background-color: #111;
+        background-color: #1e1e1e;
         color: #ffc750;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       }
@@ -121,7 +121,8 @@ import { AuthService } from '../auth.service';
         width: 120px;
         margin-top: 60px;
         float: right;
-        background: #ffc750
+        font-family: "Faculty Glyphic", sans-serif;
+        color: #1e1e1e;
       }
 
       .error {

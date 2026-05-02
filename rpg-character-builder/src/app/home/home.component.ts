@@ -22,7 +22,7 @@ import { Component } from '@angular/core';
       </div>
 
       <div class="grid-item">
-        <img src="/assets/ranger.png" alt="Ranger standing heroically" class="grid-image">
+        <img src="/assets/mage_female.png" alt="Ranger standing heroically" class="grid-image">
       </div>
 
     </div>
@@ -32,7 +32,7 @@ import { Component } from '@angular/core';
       display: grid;
       grid-template-columns: 1fr 2fr 1fr;
       gap: 20px;
-      padding: 20px;
+      padding: 0px 20px;
       min-height: 80vh;
       align-items: center;
     }
@@ -50,7 +50,7 @@ import { Component } from '@angular/core';
 
     .grid-middle {
       text-align: center;
-      padding: 20%;
+      padding: 0% 20%;
     }
   `
 })

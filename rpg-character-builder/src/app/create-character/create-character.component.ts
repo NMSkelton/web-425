@@ -16,10 +16,10 @@ import { CommonModule } from '@angular/common';
   template: `
       <div class="grid-container">
         <div class="grid-item">
-          <form 
+          <form
             class="character-form"
             #characterForm="ngForm"
-            (ngSubmit)="createCharacter()" 
+            (ngSubmit)="createCharacter()"
           >
           <h1>Create Your Character!</h1>
 
@@ -59,31 +59,32 @@ import { CommonModule } from '@angular/common';
             </button>
           </form>
         </div>
-        <div class="character-list">
+        <div class="character-container">
           <h1>Your Characters</h1>
+          <div class="character-list">
+            @for (character of characters; track character.id) {
+              <ul class="player-item">
+                <div class="card" [ngClass]="character.class">
 
-          @for (character of characters; track character.id) {
-            <ul class="player-item">
-              <div class="card" [ngClass]="character.class">
+                  <h2>{{ character.name }}</h2>
 
-                <h2>{{ character.name }}</h2>
+                  <p>
+                    <span class="label">Class: </span>
+                    <span class="value">{{ character.class }}</span>
+                  </p>
 
-                <p> 
-                  <span class="label">Class: </span>
-                  <span class="value">{{ character.class }}</span>
-                </p>
+                  <p>
+                    <span class="label">Gender: </span>
+                    <span class="value">{{ character.gender }}</span>
+                  </p>
 
-                <p>
-                  <span class="label">Gender: </span>
-                  <span class="value">{{ character.gender }}</span>
-                </p>
-
-              </div>
-            </ul>
-          }
+                </div>
+              </ul>
+            }
+          </div>
         </div>
         <div class="grid-item">
-          <img src="/assets/warrior.png" alt="Warrior standing with sword and shield" class="grid-image">
+          <img src="/assets/rogue_male.png" alt="A rogue lurking with a dagger in hand" class="grid-image">
         </div>
       </div>
   `,
@@ -96,9 +97,9 @@ import { CommonModule } from '@angular/common';
 
       .grid-container {
         display: grid;
-        grid-template-columns: 2fr 1.5fr 2fr;
+        grid-template-columns: 1.5fr 2fr 1.5fr;
         gap: 20px;
-        padding: 100px 20px 20px;
+        padding: 50px 20px 20px;
         min-height: 80vh;
         align-items: start;
       }
@@ -154,8 +155,7 @@ import { CommonModule } from '@angular/common';
 
       .character-list {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: 15px;
+        grid-template-columns: 1fr 1fr;
       }
 
       .grid-image {
@@ -164,7 +164,7 @@ import { CommonModule } from '@angular/common';
       }
 
       .card {
-        padding: 10px;
+        padding: 5px;
         border-radius: 20px;
         border: 3px solid #afafaf;
         position: relative;
@@ -175,7 +175,7 @@ import { CommonModule } from '@angular/common';
         position: relative;
         z-index: 1;
       }
-      
+
       .card::before {
         content: "";
         position: absolute;
@@ -240,7 +240,7 @@ export class CreateCharacterComponent {
     };
 
     this.characters.push(newCharacter);
-    
+
     this.resetForm();
   }
 
