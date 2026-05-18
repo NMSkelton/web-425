@@ -8,23 +8,39 @@ import { CommonModule } from '@angular/common';
   imports: [ CommonModule ],
   template: `
   <h1>Order Summary</h1>
+
   @if (order.tacos.length > 0) {
-    @for (taco of order.tacos; track taco; let i = $index) {
-      <div class="line-item">
-        <h3>Item {{ i + 1 }}: {{ taco.name }}</h3>
-        <p>Quantity: {{ taco.quantity }}</p>
-        <p>Unit Price: {{ taco.price | currency:'USD':'symbol':'1.2-2' }}</p>
-        <p>Subtotal: {{ (taco.price * (taco.quantity ?? 1)) | currency:'USD':'symbol':'1.2-2' }}</p>
-        @if (taco.noOnions || taco.noCilantro) {
-          <p>Customizations:
-            @if (taco.noOnions) { No onions }
-            @if (taco.noCilantro) { No cilantro }
-          </p>
-        }
-        <button (click)="removeTaco.emit(taco)">Remove Taco</button>
-      </div>
-    }
+
+   @for (taco of order.tacos; track taco; let i = $index) {
+   <p class="item">Item {{ i + 1 }}:</p>
+    <ul>
+    <li class="line-item">
+
+          <strong>{{ taco.quantity }}x {{ taco.name }}</strong>
+
+          <p>Price per taco: {{ taco.price | currency:'USD':'symbol':'1.2-2' }}</p>
+
+          <p>Subtotal: {{ (taco.price * (taco.quantity ?? 1)) | currency:'USD':'symbol':'1.2-2' }}</p>
+
+          @if (taco.noOnions || taco.noCilantro) {
+
+              @if (taco.noOnions) { No onions }
+                <br />
+                <br />
+              @if (taco.noCilantro) { No cilantro }
+                <br />
+                <br />
+
+
+          }
+</li>
+    </ul>
+
+  }
+
+
     <p><strong>Total:</strong> {{ getTotal() | currency:'USD':'symbol':'1.2-2' }}</p>
+
   } @else {
     <p>No tacos added to the order yet.</p>
   }
@@ -33,8 +49,9 @@ import { CommonModule } from '@angular/common';
     .line-item {
       margin-bottom: 15px;
       padding: 10px;
-      border: 1px solid #ddd;
+      border: 2px solid #9e9e9e;
       border-radius: 5px;
+      background-color: #e9e9e9;
     }
     .line-item h3 {
       margin-top: 0;
@@ -42,22 +59,20 @@ import { CommonModule } from '@angular/common';
     .line-item p {
       margin: 5px 0;
     }
-    button {
-      background-color: #f44336;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      cursor: pointer;
-      border-radius: 3px;
+
+    ul {
+      list-style-type: none;
     }
-    button:hover {
-      background-color: #d32f2f;
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   `
 })
 export class OrderSummaryComponent {
   @Input() order!: Order;
-  @Output() removeTaco = new EventEmitter<any>();
 
   getTotal() {
     return this.order.tacos.reduce((acc, taco) => acc + (taco.price * (taco.quantity ?? 1)), 0);

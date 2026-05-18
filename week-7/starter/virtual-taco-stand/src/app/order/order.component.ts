@@ -56,7 +56,10 @@ import { OrderSummaryComponent } from "../order-summary/order-summary.component"
       </form>
 
       <div class="order-summary">
-        <app-order-summary [order]="order" (removeTaco)="removeTaco($event)"></app-order-summary>
+        <app-order-summary [order]="order"></app-order-summary>
+        @for (taco of order.tacos; track taco) {
+          <button class="remove-button" (click)="removeTaco(taco)">Remove {{ taco.quantity }}x {{ taco.name }}</button>
+        }
       </div>
     </div>
   `,
@@ -115,13 +118,22 @@ import { OrderSummaryComponent } from "../order-summary/order-summary.component"
     input[type="checkbox"] {
       margin-right: 5px;
     }
-    /*
-    // Removed this from the original styling
     .order-summary li {
       margin-bottom: 10px;
       padding: 5px;
     }
-    */
+    .remove-button {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 3px;
+      margin: 2px 2px;
+    }
+    .remove-button:hover {
+      background-color: #d32f2f;
+    }
   `
     ],
     imports: [FormsModule, CommonModule, OrderSummaryComponent]
