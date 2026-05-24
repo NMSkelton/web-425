@@ -29,6 +29,7 @@ import { AuthService } from './auth.service';
             <li><a routerLink="/menu">Menu</a></li>
             <li><a routerLink="/order">Order</a></li>
             <li><a routerLink="/daily-specials">Daily Specials</a></li>
+            <li><a routerLink="/special-request">Special Request</a></li>
             <li><a routerLink="/feedback">Feedback</a></li>
           </ul>
         </nav>
@@ -43,6 +44,7 @@ import { AuthService } from './auth.service';
           <a routerLink="/menu">Menu</a> |
           <a routerLink="/order">Order</a> |
           <a routerLink="/daily-specials">Daily Specials</a> |
+          <a routerLink="/special-request">Special Request</a> |
           <a routerLink="/feedback">Feedback</a>
         </nav>
         <p>&copy; 2024 Virtual Taco Stand</p>
